@@ -16,8 +16,7 @@
           {
             "group": "Get Started",
             "pages": [
-              "index",
-              "quickstart"
+              "index"
             ]
           },
           {
@@ -29,7 +28,8 @@
               "use-cases/trello-to-wordpress",
               "use-cases/clickup-to-wordpress",
               "use-cases/ai-writer",
-              "use-cases/auto-publish"
+              "use-cases/auto-publish",
+              "use-cases/notion-to-wordpress"
             ]
           },
           {
@@ -86,11 +86,11 @@
         {
           "anchor": "Dashboard",
           "href": "https://docswrite.com/dashboard",
-          "icon": "dashboard"
+          "icon": "gauge"
         },
         {
           "anchor": "Blog",
-          "href": "https://docswrite.com/blog",
+          "href": "https://blog.docswrite.com",
           "icon": "newspaper"
         }
       ]
@@ -115,7 +115,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/docswrite",
+      "x": "https://x.com/docswrite_blog",
       "github": "https://github.com/docswrite"
     }
   }

@@ -1,50 +1,61 @@
 ---
 title: "WordPress to Google Doc"
-description: "How to export and publish your Google Docs directly to WordPress using Docswrite."
+description: "How to export and backup your WordPress content directly to Google Docs using Docswrite."
 ---
 
-# Publish Google Docs to WordPress
+# Export WordPress Content to Google Docs
 
-Publishing your Google Docs to WordPress is seamless with Docswrite. Follow these steps to automate your content workflow and eliminate manual copy-paste and formatting issues.
+Exporting your WordPress content to Google Docs is seamless with Docswrite. Follow these steps to backup your content, collaborate with editors, or create drafts in Google Docs from your existing WordPress posts and pages.
 
-## Step 1: Connect Your WordPress Site
+![Docswrite Dashboard Image](/images/new/dashboard/home.png)
 
-1. Go to the [Docswrite Dashboard](https://docswrite.com/dashboard).
-2. Click **Connect Site** and select **WordPress**.
-3. Choose your preferred connection method:
-   - **WordPress API**: Connect directly using your WordPress credentials.
-   - **Docswrite Plugin**: Install the Docswrite plugin on your WordPress site for advanced features.
+## Step 1: Connect Your Google Account
 
-> For more details, see [WordPress Connection Guide](/essentials/wordpress-connection).
+To get started, connect your Google Account so Docswrite can access your Google Docs.
 
-## Step 2: Link Your Google Account
+1. In the Docswrite dashboard, click **Connect Google Account**.
+2. Sign in with your Google credentials.
+3. Grant Docswrite the requested permissions.
 
-1. In the dashboard, click **Connect Google Account**.
-2. Authorize Docswrite to access your Google Docs.
+> **Note:** Docswrite only requests the minimal permissions needed to access and export your selected Google Drive documents.
 
-## Step 3: Select and Export Your Document
+![Docswrite Dashboard Image](/images/new/dashboard/google-drive.png)
+![Google Drive](/images/new/dashboard/google-drive-1.png)
+![Google Drive](/images/new/dashboard/google-drive-2.png)
+![Google Drive](/images/new/dashboard/google-drive-3.png)
 
-1. Choose the Google Doc you want to publish.
-2. Click **Export** and select your connected WordPress site.
-3. Configure export options (e.g., post type, categories, tags, SEO fields).
-4. Click **Publish**.
+## Step 2: Connect Your WordPress Site
 
-Docswrite will automatically convert your Google Doc into a WordPress post or page, preserving formatting, images, and metadata.
+Next, connect your WordPress site to Docswrite. You can do this in one of two ways:
 
-## Bulk Export
+- [Connect via API](/integrations/wordpress/api)
+- [Connect via WordPress Plugin](/integrations/wordpress/plugin)
 
-You can select multiple Google Docs and export them in bulk to WordPress. This is ideal for migrating large amounts of content.
+Follow the prompts in the dashboard to complete the connection.
 
-## Supported Features
+![Docswrite Dashboard Image](/images/new/dashboard/after-connection.png)
 
-- **Formatting**: Headings, lists, tables, images, and more.
-- **SEO**: Supports YoastSEO, RankMath, and ACF fields.
-- **Images**: Inline images are uploaded to your WordPress media library.
-- **Custom Fields**: Map Google Doc content to custom fields in WordPress.
+## Step 3: Import Posts from WordPress
 
-## Troubleshooting
+Click **Import From WordPress** in the Docswrite dashboard to begin importing your WordPress posts into Google Docs.
 
-- If you encounter issues, check your WordPress connection and plugin status.
-- For help, visit our [Support Page](https://docswrite.com/support).
+![Import from WordPress](/images/new/dashboard/select-file-import.png)
 
-Ready to automate your publishing workflow? [Get started with Docswrite](https://docswrite.com/).
+## Step 4: Choose Your Destination Google Drive Folder
+
+Select the Google Drive folder where you want your imported posts to be saved.
+
+![Select your folder](/images/new/dashboard/select-folder.png)
+
+## Step 5: Select Posts to Import
+
+Docswrite will display all your WordPress posts. Choose one, multiple, or all posts you wish to import.  
+When you're ready, click **Import Posts** to start the process.
+
+![Select your posts](/images/new/dashboard/select-the-files-to-import.png)
+
+## Step 6: 🎉 Your Posts Are Now Successfully Imported!
+
+Your selected WordPress posts have been imported into Docswrite and are now available in your chosen Google Drive folder.
+
+![Select your posts](/images/new/dashboard/published-posts.png)

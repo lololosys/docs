@@ -1,84 +1,108 @@
 ---
-title: "Clickup to WordPress"
-description: "How to automate your content creation, management, and publishing process using Google Docs and Docswrite."
+title: "ClickUp to WordPress"
+description: "How to automate publishing from Google Docs to WordPress using ClickUp, Zapier, and Docswrite."
 ---
 
-# Automate Your Content Workflow with Docswrite
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/11HKpgXQbZ8"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
-Docswrite makes it easy to automate your entire content workflow—from drafting in Google Docs to publishing on your website or CMS. Eliminate manual copy-paste, streamline collaboration, and ensure your content is always formatted and published exactly how you want.
+# How to Publish from Google Docs to WordPress using ClickUp
 
-## Why Automate Your Content Workflow?
+Integrating ClickUp with Zapier and Docswrite allows you to automate your content workflow, making it easy to move content from Google Docs to publishing in WordPress, all triggered by your ClickUp tasks.
 
-Manual content processes are slow, error-prone, and hard to scale. Automation helps you:
+## What You’ll Need
 
-- Save time by reducing repetitive tasks
-- Maintain consistent formatting and branding
-- Collaborate seamlessly with your team in Google Docs
-- Publish to multiple platforms with a single click
-- Scale your content production without extra effort
+- A ClickUp account
+- A Zapier account
+- A Docswrite account
+- A WordPress site
 
-## How Docswrite Automates Your Workflow
+---
 
-With Docswrite, you can:
+## Step 1: Generate Your Docswrite Authentication Token
 
-- **Connect your CMS** (WordPress, Contentful, etc.) to Docswrite
-- **Link your Google Account** to access and manage your docs
-- **Draft and collaborate** in Google Docs as usual
-- **Export and publish** directly from Google Docs to your website
-- **Bulk export** multiple docs at once for large-scale publishing
-- **Map custom fields** and SEO metadata automatically
+To connect Docswrite with Zapier, you'll need an authentication token. Follow these steps:
 
-## Step-by-Step: Automating Your Content Workflow
+1. **Open the Docswrite Dashboard:** Log in to your Docswrite account and navigate to your site's dashboard.
+2. **Access Settings:** Click on the settings icon of the site you want to manage.
 
-### 1. Connect Your CMS
+   ![Settings](/images/new/dashboard/settings.png)
 
-1. Go to the [Docswrite Dashboard](https://docswrite.com/dashboard).
-2. Click **Connect Site** and select your CMS (e.g., WordPress).
-3. Follow the prompts to authenticate and set up the connection.
+3. **Generate Auth Token:** In the Settings tab, click on **Get Auth Token**.
 
-> For more details, see [WordPress Connection Guide](/essentials/wordpress-connection).
+   ![Generate Auth Token](/images/new/dashboard/generate-auth-token.png)
 
-### 2. Link Your Google Account
+4. **Copy and Save Your Token:** Once the token is generated, copy it and keep it somewhere safe. You’ll need this token to connect Docswrite to Zapier.
 
-1. In the dashboard, click **Connect Google Account**.
-2. Authorize Docswrite to access your Google Docs.
+   ![Auth Token Generated](/images/new/dashboard/auth-token-generated.png)
 
-### 3. Draft and Collaborate in Google Docs
+---
 
-- Create your content in Google Docs as you normally would.
-- Collaborate with your team, leave comments, and make edits in real time.
+## Step 2: Make Your Google Doc Publicly Accessible
 
-### 4. Export and Publish
+Before Docswrite can access your Google Doc, you need to ensure the document is publicly viewable. Here’s how:
 
-1. In Docswrite, select the Google Doc(s) you want to publish.
-2. Click **Export** and choose your connected CMS.
-3. Configure export options (post type, categories, tags, SEO fields, custom fields).
-4. Click **Publish** to send your content live.
+1. **Open your Google Doc.**
+2. Click on **_File_ → _Share_ → _Share with others_**.
 
-Docswrite will automatically convert your Google Doc into a published post or page, preserving formatting, images, and metadata.
+   ![Share with others](/images/new/dashboard/share-with-others.png)
 
-### 5. Bulk Export (Optional)
+3. In the sharing settings, set the document so that **"Anyone with the link can view"**.
 
-- Select multiple Google Docs to export and publish in bulk—perfect for content migrations or large campaigns.
+   > 💡 _If your document isn’t public, Docswrite won’t be able to fetch its content!_
 
-## Supported Features
+4. Copy the shareable link and save it for the next step to put it in your ClickUp task’s custom field.
 
-- **Formatting**: Headings, lists, tables, images, and more
-- **SEO**: Supports YoastSEO, RankMath, and ACF fields
-- **Images**: Inline images are uploaded to your CMS media library
-- **Custom Fields**: Map Google Doc content to custom fields in your CMS
-- **Bulk Export**: Publish multiple docs at once
+   ![zap](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_1.png)
 
-## Use Cases
+---
 
-- Editorial teams managing blog posts and articles
-- Agencies publishing client content at scale
-- Programmatic SEO campaigns
-- Migrating content from Google Docs to your website
+## Step 3: Set Up Your ClickUp Workspace
 
-## Troubleshooting
+1. **Create a ClickUp Space or List:** Organize your content workflow in ClickUp.
+2. **Add Tasks:** Create a task for each piece of content you plan to publish. Include details like the title, tags, or categories.
+3. **Add Custom Fields:**
+   - **Google Docs Link:** Add a custom field named "Google Docs"—this is where you’ll paste the public link to your Google Doc.
+   - **Content Editor:** Add a custom field named "Content Editor" and set its value to either `gutenberg_editor` or `classic_editor` depending on your preferred WordPress editor.
+   - **Author:** Add a custom field named "Author" with your author name.
+   - If there are any other custom fields that you wish to control, just specify them in the custom fields.
 
-- If you encounter issues, check your CMS connection and plugin status.
-- For help, visit our [Support Page](https://docswrite.com/support).
+---
 
-Ready to automate your content workflow? [Get started with Docswrite](https://docswrite.com/).
+## Step 4: Create a Zap in Zapier
+
+1. **Log in to Zapier:** Go to Zapier and log in or create an account.
+2. **Create a New Zap:** Click on the "Make a Zap" button.
+
+---
+
+## Step 5: Set Up the ClickUp Trigger
+
+1. **Choose ClickUp as the Trigger App:** Search for and select ClickUp.
+2. **Select the Trigger Event:** Choose "Task Status Changed" (or another event that fits your workflow, such as "Task Moved to List").
+3. **Connect Your ClickUp Account:** Authorize Zapier to access your ClickUp account.
+4. **Set Up Trigger Options:** Select the workspace, space, folder, and list that will trigger the Zap. Click "Continue" and test the trigger to ensure it works.
+
+---
+
+## Step 6: Set Up Docswrite to Publish
+
+1. **Choose Docswrite as the Action App:** Search for and select Docswrite.
+2. **Select the Action Event:** Choose "Export Content from Google Docs to WordPress."
+3. **Connect Your Docswrite Account:**
+   - Authorize Zapier to access your Docswrite Dashboard.
+   - Paste the **Authentication Token** from step 1.
+
+---
+
+## Step 7: Test Your Zap
+
+- **Test the Zap:** Run a test to ensure that updating a task in ClickUp creates a post in WordPress.
+- **Check Your WordPress Site:** Visit your site to confirm the post has been published successfully.

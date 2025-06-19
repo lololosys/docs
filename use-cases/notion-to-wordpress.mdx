@@ -1,0 +1,107 @@
+---
+title: "Notion to WordPress"
+description: "How to automate publishing from Notion to WordPress using Zapier and Docswrite."
+---
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/e1EU0obAbjM"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+
+# How to Publish from Notion to WordPress using Zapier and Docswrite
+
+Integrating Notion with Zapier and Docswrite allows you to automate your content workflow, making it easy to move content from Notion to publishing in WordPress, all triggered by your Notion database.
+
+## What You’ll Need
+
+- A Notion account
+- A Zapier account
+- A Docswrite account
+- A WordPress site
+
+---
+
+## Step 1: Generate Your Docswrite Authentication Token
+
+To connect Docswrite with Zapier, you'll need an authentication token. Follow these steps:
+
+1. **Open the Docswrite Dashboard:** Log in to your Docswrite account and navigate to your site's dashboard.
+2. **Access Settings:** Click on the settings icon of the site you want to manage.
+
+   ![Settings](/images/new/dashboard/settings.png)
+
+3. **Generate Auth Token:** In the Settings tab, click on **Get Auth Token**.
+
+   ![Generate Auth Token](/images/new/dashboard/generate-auth-token.png)
+
+4. **Copy and Save Your Token:** Once the token is generated, copy it and keep it somewhere safe. You’ll need this token to connect Docswrite to Zapier.
+
+   ![Auth Token Generated](/images/new/dashboard/auth-token-generated.png)
+
+---
+
+## Step 2: Make Your Notion Page Publicly Accessible
+
+Before Docswrite can access your Notion page, you need to ensure the page is shared correctly. Here’s how:
+
+1. **Open your Notion page.**
+2. Click on **Share** in the top right corner.
+3. Toggle on **Share to web** so that **"Anyone with the link can view"**.
+
+   > 💡 _If your Notion page isn’t shared to the web, Docswrite won’t be able to fetch its content!_
+
+4. Copy the shareable link and save it for the next step to put it in your Notion database property.
+
+---
+
+## Step 3: Set Up Your Notion Database
+
+1. **Create a Notion Database:** Organize your content workflow in Notion.
+2. **Add Pages:** Create a page for each piece of content you plan to publish. Include details like the title, tags, or categories.
+3. **Add Properties:**
+   - **Notion Page Link:** Add a property named "Notion Link"—this is where you’ll paste the public link to your Notion page.
+   - **Content Editor:** Add a property named "Content Editor" and set its value to either `gutenberg_editor` or `classic_editor` depending on your preferred WordPress editor.
+   - **Author:** Add a property named "Author" with your author name.
+   - If there are any other custom properties that you wish to control, just specify them in the database.
+
+---
+
+## Step 4: Create a Zap in Zapier
+
+1. **Log in to Zapier:** Go to Zapier and log in or create an account.
+2. **Create a New Zap:** Click on the "Make a Zap" button.
+
+---
+
+## Step 5: Set Up the Notion Trigger
+
+1. **Choose Notion as the Trigger App:** Search for and select Notion.
+2. **Select the Trigger Event:** Choose "New Database Item" (or another event that fits your workflow, such as "Database Item Updated").
+3. **Connect Your Notion Account:** Authorize Zapier to access your Notion account.
+4. **Set Up Trigger Options:** Select the workspace and database that will trigger the Zap. Click "Continue" and test the trigger to ensure it works.
+
+---
+
+## Step 6: Set Up Docswrite to Publish
+
+1. **Choose Docswrite as the Action App:** Search for and select Docswrite.
+2. **Select the Action Event:** Choose "Export Content from Notion to WordPress."
+3. **Connect Your Docswrite Account:**
+   - Authorize Zapier to access your Docswrite Dashboard.
+   - Paste the **Authentication Token** from step 1.
+
+---
+
+## Step 7: Test Your Zap
+
+- **Test the Zap:** Run a test to ensure that adding or updating a page in Notion creates a post in WordPress.
+- **Check Your WordPress Site:** Visit your site to confirm the post has been published successfully.
+
+---
+
+For a full walkthrough, see the [YouTube tutorial](https://www.youtube.com/watch?v=e1EU0obAbjM).
