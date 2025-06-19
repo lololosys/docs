@@ -4,11 +4,6 @@ description: "Create or update WordPress posts and pages from Google Docs"
 openapi: "POST /api/export"
 ---
 
-<Note>
-  This endpoint is automatically generated from our OpenAPI specification.
-  Parameters, examples, and responses are kept in sync with the API.
-</Note>
-
 ## Additional Information
 
 ### Best Practices
@@ -18,28 +13,6 @@ openapi: "POST /api/export"
 3. **Use descriptive titles and slugs** for better SEO
 4. **Include alt text for images** for accessibility
 5. **Set appropriate categories and tags** to organize content
-6. **Use the WordPress plugin** for enhanced SEO features
-
-### Job Tracking
-
-After creating a post, use the returned `jobId` to track progress:
-
-```bash
-curl -X POST 'https://api.docswrite.com/api/job/status' \
-  -H 'Content-Type: application/json' \
-  -H 'x-access-token: YOUR_JWT_TOKEN' \
-  -d '{
-    "jobId": "job-abc123",
-    "queueType": "post"
-  }'
-```
-
-See the [Job Status endpoint](/api-reference/endpoint/get) for complete tracking details.
-
-<Note>
-  For a complete list of all available parameters including advanced settings,
-  see our [Parameters Reference](/essentials/parameters).
-</Note>
 
 ## Create WordPress Post
 

@@ -29,7 +29,6 @@
               "use-cases/trello-to-wordpress",
               "use-cases/clickup-to-wordpress",
               "use-cases/ai-writer",
-              "use-cases/auto-publish",
               "use-cases/notion-to-wordpress"
             ]
           },
@@ -38,11 +37,27 @@
             "icon": "integration",
             "pages": [
               {
-                "group": "Wordpress",
+                "group": "WordPress",
                 "icon": "wordpress",
                 "pages": [
-                  "integrations/wordpress/api/index",
-                  "integrations/wordpress/plugin/index"
+                  {
+                    "group": "Methods",
+                    "name": "Connection Methods",
+                    "pages": [
+                      "integrations/wordpress/api/index",
+                      "integrations/wordpress/plugin/index"
+                    ]
+                  },
+                  {
+                    "group": "Support",
+                    "name": "WordPress Support",
+                    "pages": [
+                      "integrations/wordpress/acf",
+                      "integrations/wordpress/yoastseo",
+                      "integrations/wordpress/newspack",
+                      "integrations/wordpress/rankmath"
+                    ]
+                  }
                 ]
               }
             ]
