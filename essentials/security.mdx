@@ -1,0 +1,99 @@
+---
+title: "Security & Privacy"
+description: "Learn about Docswrite's comprehensive security measures, data protection, and privacy safeguards"
+---
+
+## Our Commitment to Security
+
+At Docswrite, security and privacy are fundamental to everything we do. We understand that your content, authentication credentials, and publishing workflows contain sensitive information that requires the highest level of protection. Our comprehensive security framework ensures your data remains safe, private, and under your control.
+
+## Authentication & Access Control
+
+### Multi-Layered Authentication
+
+Docswrite implements robust authentication mechanisms to protect your accounts and data:
+
+- **OAuth 2.0 Integration**: Secure integration through Docswrite using industry-standard OAuth 2.0 protocols
+- **JWT Token Security**: JSON Web Tokens with secure signing algorithms
+- **Application Passwords**: WordPress Application Passwords (WordPress 5.6+) for secure, plugin-independent access
+
+### Access Control & Permissions
+
+We follow the principle of least privilege across all our integrations:
+
+**WordPress Connections**
+
+- **Minimal Permissions**: Only requests permissions necessary for publishing (posts, media, categories/tags)
+- **Revocable Access**: You can revoke Docswrite's access anytime from your WordPress admin panel
+
+**Google Drive Integration**
+
+- **Document-Specific Access**: Only accesses Google Docs you explicitly share or authorize
+- **Read-Only Operations**: Cannot modify your current original Google Docs but only create new Google Docs or create Google Drive files
+- **Selective Permissions**: No access to private documents or other Google services beyond what's needed
+
+**Contentful Integration**
+
+- **API Key Security**: Uses secure Contentful Management API tokens with restricted permissions
+- **Space-Specific Access**: Limited to only the Contentful spaces you authorize
+- **Content Type Restrictions**: Only operates on content types you specify
+
+## Data Protection & Privacy
+
+### Data Handling Principles
+
+**Data Minimization**
+
+- We only collect and process data necessary for publishing your content
+- No unnecessary tracking or data harvesting
+
+**Data Encryption**
+
+- **In Transit**: All data transfers use TLS 1.3 encryption
+- **API Communications**: End-to-end encrypted API calls
+
+### Privacy Safeguards
+
+**Google Docs Privacy**
+
+- **Shared Link Requirement**: Only processes documents with "Anyone with the link" sharing enabled
+
+**WordPress Site Security**
+
+- **Secure Connections**: All WordPress communications over HTTPS
+- **User Permission Validation**: Verifies your WordPress user permissions before any operations
+- **Media Security**: Images and files uploaded securely through WordPress REST API
+
+## 🏗️ Infrastructure Security
+
+### Cloud Security
+
+**Hosting & Infrastructure**
+
+- **Enterprise-Grade Cloud**: Hosted on SOC 2 Type II compliant infrastructure within Digital Ocean
+- **Global CDN**: Content delivered through secure, global content delivery networks using Cloudflare
+- **DDoS Protection**: Advanced distributed denial-of-service attack protection using Cloudflare
+
+<Note>
+  Security is an ongoing process. We continuously update our security measures
+  and will keep this documentation current. For the latest security information
+  or to report security concerns, contact us at security@docswrite.com.
+</Note>
+
+## Need Help?
+
+<CardGroup cols={2}>
+  <Card
+    title="Report Security Issue"
+    icon="shield-exclamation"
+    href="mailto:security@docswrite.com"
+  >
+    Report security vulnerabilities or concerns to our security team
+  </Card>
+  <Card title="Privacy Policy" icon="file-shield" href="/privacy-policy">
+    Read our complete privacy policy and data handling practices
+  </Card>
+  <Card title="Contact Support" icon="envelope" href="/support">
+    Get help with security questions or account issues
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "Zapier Integration"
+description: "How to connect and publish to Zapier"
+---
+
+# Zapier API Integration
+
+Docswrite allows you to automate publishing from Google Docs to platforms like WordPress using Zapier. This guide explains how to connect your Docswrite account to Zapier and set up automated publishing workflows.
+
+## What Credentials Do You Need?
+
+To connect Docswrite to Zapier, you'll need the following:
+
+- **Docswrite Authentication Token:**  
+  This token authorizes Zapier to access your Docswrite account and perform publishing actions. You can generate it from your Docswrite dashboard.
+
+---
+
+## How to Connect Docswrite to Zapier
+
+1. **Go to the [Docswrite Dashboard](https://docswrite.com/dashboard).**  
+   Log in to your Docswrite account.
+
+2. **Generate Your Authentication Token:**
+
+   - Navigate to your site's dashboard.
+   - Click on the settings icon for the site you want to connect.
+   - In the Settings tab, click on **Get Auth Token**.
+   - Copy the generated token and keep it safe.
+
+   ![Generate Auth Token](/images/new/dashboard/generate-auth-token.png)
+
+3. **Set Up Your Zap in Zapier:**
+
+   - Log in to [Zapier](https://zapier.com).
+   - Create a new Zap and choose your trigger app (e.g., Trello, Google Sheets, etc.).
+   - For the action, search for and select **Docswrite**.
+   - When prompted, paste your **Docswrite Authentication Token** to connect your account.
+
+4. **Configure Your Zap:**
+   - Set up the action event (e.g., "Export Content from Google Docs to WordPress").
+   - Map the required fields, such as the public Google Docs link and any custom fields you want to use.
+   - Test your Zap to ensure everything works as expected.
+
+> 📝 _If you need more details on setting up a Zapier workflow with Docswrite, see the [Trello to WordPress use case](/use-cases/trello-to-wordpress)._
+
+---
+
+Once your Zap is set up, Docswrite will automatically publish your Google Docs content whenever your chosen trigger occurs in Zapier!

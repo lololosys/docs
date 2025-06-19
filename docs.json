@@ -38,7 +38,6 @@
             "pages": [
               {
                 "group": "WordPress",
-                "icon": "wordpress",
                 "pages": [
                   {
                     "group": "Methods",
@@ -59,16 +58,27 @@
                     ]
                   }
                 ]
+              },
+              {
+                "group": "Contentful",
+                "pages": [
+                  "integrations/contentful/api/index"
+                ]
+              },
+              {
+                "group": "Zapier",
+                "pages": [
+                  "integrations/zapier/index"
+                ]
               }
             ]
           },
           {
-            "group": "Account Management",
+            "group": "Account",
             "pages": [
-              "essentials/parameters",
-              "essentials/wordpress-connection",
-              "essentials/wordpress-plugin",
-              "essentials/faqs"
+              "essentials/account-management",
+              "essentials/security",
+              "support"
             ]
           }
         ]
@@ -96,7 +106,7 @@
       "anchors": [
         {
           "anchor": "Support",
-          "href": "https://docswrite.com/support",
+          "href": "https://join.slack.com/t/docswritecom/shared_invite/zt-1j0f1wly8-8lEYgDLDGfBFRkh50SRF7Q",
           "icon": "life-ring"
         },
         {
@@ -120,7 +130,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "https://docswrite.com/support"
+        "href": "https://join.slack.com/t/docswritecom/shared_invite/zt-1j0f1wly8-8lEYgDLDGfBFRkh50SRF7Q"
       }
     ],
     "primary": {

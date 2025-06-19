@@ -1,0 +1,48 @@
+---
+title: "API"
+description: "How to connect and publish to Contentful"
+---
+
+# Contentful API Integration
+
+Docswrite allows you to publish Google Docs directly to your Contentful space using Contentful's APIs. This guide explains how to connect your Contentful account and use the API for seamless publishing.
+
+## What Credentials Do You Need?
+
+To connect Docswrite to your Contentful space, you'll need the following credentials:
+
+- **Space ID:**  
+  This identifies your Contentful space. You can find it in Contentful under _Settings → General Settings_.
+
+- **Content Delivery API Access Token:**  
+  This token allows Docswrite to read published content from your space. Generate it in _Settings → API keys_ in Contentful.
+
+- **Content Management API (CMA) Token:**  
+  This token allows Docswrite to create and update content in your space. Generate it in _Settings → CMA Tokens_ in Contentful.
+
+> 📝 _Docswrite provides tooltips and help links for each field if you’re unsure where to find them._
+
+---
+
+## How to Connect Contentful to Docswrite
+
+![Connect Contentful to Docswrite](/images/new/dashboard/contentful-api-connection.png)
+
+1. **Go to the [Docswrite Dashboard](https://docswrite.com/dashboard).**  
+   (Note: To connect multiple sites, you’ll need to be on the Business plan.)
+
+2. **Add a new site and choose Contentful** as the platform.
+
+3. **Enter the required Contentful credentials:**
+
+   - **Space ID:**  
+     Find this in Contentful under _Settings → General Settings_. Copy and paste it into Docswrite.
+   - **Content Delivery API Access Token:**  
+     Go to _Settings → API keys_ in Contentful, generate a new API key, and copy the Content Delivery API token.
+     ![API Key](/images/new/dashboard/contentful-api-key.png)
+   - **Content Management API (CMA) Token:**  
+     In Contentful, go to _Settings → CMA Tokens_, then create a new Management Token (CMA token) and copy it.
+     ![CMA](/images/new/dashboard/contentful-cma-tokens.png)
+
+4. **Connect!**  
+   Once you’ve entered all the info, click to connect. If everything is correct, your Contentful site will be linked to Docswrite.
