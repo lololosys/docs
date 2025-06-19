@@ -1,0 +1,111 @@
+---
+title: "Google Docs to Contentful"
+description: "How to automate publishing from Google Docs to Contentful natively"
+---
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/uIog0D4Qhhg"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+
+# Publish Google Docs to Contentful
+
+Learn how to seamlessly export and publish your Google Docs directly to Contentful using Docswrite. This guide covers connecting your Contentful account, setting up the correct content model, and publishing your documents with all formatting and metadata intact.
+
+---
+
+## Step 1: Set Up Your Contentful Account and Content Model
+
+First, log in to your Contentful account (or create one if you haven’t already). Once inside, you’ll need to create a **content model** so Docswrite knows how to map your Google Doc fields.
+
+![Contentful](/images/new/dashboard/contentful-content-type.png)
+
+1. **Create a Content Type:**  
+   In Contentful, go to the Content Model section and click **Add Content Type**. You can either create one manually or use Contentful’s AI to generate it for you.
+
+2. **Add the Following Fields:**  
+   For Docswrite to recognize and publish your document correctly, add these fields (with the exact names):
+
+   - `blog post` (Long text)
+   - `categories` (Short text or list)
+   - `excerpt` (Short text)
+   - `title` (Short text)
+   - `slug` (Short text)
+   - `feature image` (Media)
+   - `author` (Short text **important:** set as text, not reference, so you can customize it)
+   - `content` (Long text)
+
+   > 💡 _You can add more fields if you want, but these are the basics for this example. Make sure to save your content type after adding or editing fields!_
+
+3. **Save your content type.**  
+   Double-check everything, add or remove fields as needed, and always remember to save your changes!
+
+---
+
+## Step 2: Connect Contentful to Docswrite
+
+![Connect contentful to Docswrite](/images/new/dashboard/contentful-api-connection.png)
+
+Now, let’s connect your Contentful space to Docswrite.
+
+1. **Go to your Docswrite dashboard.**  
+   (Note: To connect multiple sites, you’ll need to be on the Business plan.)
+
+2. **Add a new site and choose Contentful** as the platform (not WordPress).
+
+3. **Enter the required Contentful credentials:**
+
+   - **Space ID:**  
+     Find this in Contentful under _Settings → General Settings_. Copy and paste it into Docswrite.
+   - **Content Delivery API Access Token:**  
+      Go to _Settings → API keys_ in Contentful, generate a new API key, and copy the Content Delivery API token.
+     ![API Key](/images/new/dashboard/contentful-api-key.png)
+
+   - **Content Management API (CMA) Token:**  
+      In Contentful, go to \_Settings → CMA Tokens, then create a new Management Token (CMA token) and copy it.
+     ![CMA](/images/new/dashboard/contentful-cma-tokens.png)
+
+   > 📝 _Docswrite provides tooltips and help links for each field if you’re unsure where to find them._
+
+4. **Connect!**  
+   Once you’ve entered all the info, click to connect. If everything is correct, your Contentful site will be linked to Docswrite.
+
+---
+
+## Step 3: Publish Your Google Doc to Contentful
+
+![Contentful ](/images/new/dashboard/contentful-new-blog.png)
+
+Now you’re ready to publish!
+
+1. **Go to your Docswrite dashboard.**
+2. **Select the Google Doc** you want to publish.
+3. **Choose your Contentful content model:**  
+   Select the content type you just created (e.g., "blog post").
+4. **Map your fields:**
+
+   - Docswrite will auto-map fields like title and slug, but you can customize them if needed.
+   - For "author", since you set it as text, you can type your name
+   - For "feature image", you can select the first image from your doc or choose another.
+   - For "content", select "main content" to use the body of your Google Doc.
+
+5. **Save your configuration (optional):**  
+   If you want to reuse these settings for future posts, save them as a preset.
+
+6. **Publish!**
+
+   Click publish, and Docswrite will send your Google Doc directly to Contentful, mapped to your content model.
+
+---
+
+## Step 4: See Your Published Content in Contentful
+
+![Contentful ](/images/new/dashboard/contentful-see-blogs.png)
+
+- Go to Contentful and check your entries. You’ll see your new post with the title, slug, author, feature image, and content exactly as in your Google Doc.
+- You can edit, unpublish, or delete as needed everything is synced!

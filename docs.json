@@ -25,6 +25,7 @@
               "use-cases/google-doc-wordpress",
               "use-cases/wordpress-to-google-doc",
               "use-cases/programmatic-seo",
+              "use-cases/google-docs-to-contentful",
               "use-cases/trello-to-wordpress",
               "use-cases/clickup-to-wordpress",
               "use-cases/ai-writer",
