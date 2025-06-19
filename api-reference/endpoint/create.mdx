@@ -1,4 +1,280 @@
 ---
-title: 'Create Plant'
-openapi: 'POST /plants'
+title: "Create WordPress Post"
+description: "Create or update WordPress posts and pages from Google Docs"
+openapi: "POST /api/export"
 ---
+
+<Note>
+  This endpoint is automatically generated from our OpenAPI specification.
+  Parameters, examples, and responses are kept in sync with the API.
+</Note>
+
+## Additional Information
+
+### Best Practices
+
+1. **Always share Google Docs** with "Anyone with the link"
+2. **Test with drafts first** before publishing live content
+3. **Use descriptive titles and slugs** for better SEO
+4. **Include alt text for images** for accessibility
+5. **Set appropriate categories and tags** to organize content
+6. **Use the WordPress plugin** for enhanced SEO features
+
+### Job Tracking
+
+After creating a post, use the returned `jobId` to track progress:
+
+```bash
+curl -X POST 'https://api.docswrite.com/api/job/status' \
+  -H 'Content-Type: application/json' \
+  -H 'x-access-token: YOUR_JWT_TOKEN' \
+  -d '{
+    "jobId": "job-abc123",
+    "queueType": "post"
+  }'
+```
+
+See the [Job Status endpoint](/api-reference/endpoint/get) for complete tracking details.
+
+<Note>
+  For a complete list of all available parameters including advanced settings,
+  see our [Parameters Reference](/essentials/parameters).
+</Note>
+
+## Create WordPress Post
+
+Create or update a blog post or page on your WordPress site from a Google Docs document.
+
+```bash
+POST https://api.docswrite.com/api/export?token=YOUR_TOKEN
+```
+
+### Headers
+
+| Header       | Value              |
+| ------------ | ------------------ |
+| Content-Type | `application/json` |
+
+### Request Body
+
+The request body should contain the Google Docs URL and any additional parameters to customize the post.
+
+### Required Parameters
+
+| Parameter         | Type   | Description                                                       |
+| ----------------- | ------ | ----------------------------------------------------------------- |
+| `google_docs_url` | string | URL of the Google Doc. **Must be shared with "anyone with link"** |
+
+### Optional Parameters
+
+| Parameter                 | Type   | Default           | Description                                  |
+| ------------------------- | ------ | ----------------- | -------------------------------------------- |
+| `title`                   | string | Google Docs title | Post title                                   |
+| `slug`                    | string | Auto-generated    | Custom URL slug                              |
+| `tags`                    | string | -                 | Comma-separated list of tags                 |
+| `categories`              | string | -                 | Comma-separated list of categories           |
+| `state`                   | string | `draft`           | Post status: `publish` or `draft`            |
+| `author`                  | string | API token creator | Author username or full name                 |
+| `date`                    | string | Current time      | Publish date in `YYYY-MM-DD HH:MM:SS` format |
+| `excerpt`                 | string | -                 | Post excerpt for SEO                         |
+| `post_type`               | string | `post`            | Type: `post` or `page`                       |
+| `featured_image_url`      | string | -                 | URL of featured image                        |
+| `featured_image_alt_text` | string | -                 | Alt text for featured image                  |
+| `featured_image_caption`  | string | -                 | Caption for featured image                   |
+
+### Export Settings
+
+Control how your content is processed:
+
+| Parameter                                         | Type    | Default   | Description                                     |
+| ------------------------------------------------- | ------- | --------- | ----------------------------------------------- |
+| `export_settings.compress_images`                 | boolean | `true`    | Compress images before upload                   |
+| `export_settings.demote_headings`                 | boolean | `false`   | Demote headings by one level                    |
+| `export_settings.convert_to_webp`                 | boolean | `true`    | Convert images to WebP format                   |
+| `export_settings.first_image_as_featured_image`   | boolean | `true`    | Set first image as featured image               |
+| `export_settings.add_no_follow_to_external_links` | boolean | `true`    | Add `nofollow` to external links                |
+| `export_settings.bold_as_strong`                  | boolean | `false`   | Convert bold text to `strong` tag               |
+| `export_settings.wp_content_editor`               | string  | `classic` | Content editor: `classic` or `gutenberg_editor` |
+
+### SEO Plugin Settings
+
+#### Yoast SEO Settings
+
+| Parameter                        | Type   | Description      |
+| -------------------------------- | ------ | ---------------- |
+| `yoast_settings.yoast_focuskw`   | string | Focus keyword    |
+| `yoast_settings.yoast_metadesc`  | string | Meta description |
+| `yoast_settings.yoast_title`     | string | SEO title        |
+| `yoast_settings.yoast_canonical` | string | Canonical URL    |
+
+#### RankMath Settings
+
+| Parameter                                   | Type   | Description   |
+| ------------------------------------------- | ------ | ------------- |
+| `rankmath_settings.rank_math_focus_keyword` | string | Focus keyword |
+
+#### Newspack Settings
+
+| Parameter                                          | Type   | Description     |
+| -------------------------------------------------- | ------ | --------------- |
+| `newspack_settings.newspack_article_summary`       | string | Article summary |
+| `newspack_settings.newspack_article_summary_title` | string | Summary title   |
+| `newspack_settings.newspack_post_subtitle`         | string | Post subtitle   |
+
+### Advanced Custom Fields (ACF)
+
+| Parameter        | Type   | Description                                   |
+| ---------------- | ------ | --------------------------------------------- |
+| `acf_field_name` | string | Custom field value (supports URLs for images) |
+
+## Example Requests
+
+### Basic Request
+
+```json
+{
+  "google_docs_url": "https://docs.google.com/document/d/1aBcDeFg/edit?usp=sharing",
+  "title": "My Blog Post",
+  "state": "publish",
+  "categories": "Technology, WordPress",
+  "tags": "automation, publishing"
+}
+```
+
+### Complete Request with All Options
+
+```json
+{
+  "google_docs_url": "https://docs.google.com/document/d/1aBcDeFgHiJkLmNopQrStUvWxYz/edit?usp=sharing",
+  "title": "Complete Example Blog Post",
+  "slug": "complete-example-blog-post",
+  "tags": "example, blog post, complete",
+  "categories": "Technology, Tutorials",
+  "state": "draft",
+  "author": "Jane Doe",
+  "date": "2024-04-01 09:00:00",
+  "excerpt": "This is a comprehensive example of all available parameters.",
+  "post_type": "post",
+  "featured_image_url": "https://images.unsplash.com/photo-1662572091420-95992f339784",
+  "featured_image_alt_text": "Complete Example Featured Image",
+  "featured_image_caption": "Example caption for the featured image",
+  "export_settings": {
+    "compress_images": true,
+    "demote_headings": false,
+    "convert_to_webp": true,
+    "first_image_as_featured_image": true,
+    "add_no_follow_to_external_links": true,
+    "bold_as_strong": false,
+    "wp_content_editor": "classic"
+  },
+  "newspack_settings": {
+    "newspack_article_summary": "This is an example article summary for Newspack themes.",
+    "newspack_article_summary_title": "Example Summary Title",
+    "newspack_post_subtitle": "Example Post Subtitle"
+  },
+  "yoast_settings": {
+    "yoast_focuskw": "example blog post",
+    "yoast_metadesc": "This is a comprehensive example meta description for SEO.",
+    "yoast_title": "Complete Example Blog Post | My Site"
+  },
+  "rankmath_settings": {
+    "rank_math_focus_keyword": "example blog post"
+  }
+}
+```
+
+### Scheduled Post Request
+
+```json
+{
+  "google_docs_url": "https://docs.google.com/document/d/1aBcDeFg/edit",
+  "title": "Scheduled Blog Post",
+  "state": "publish",
+  "date": "2024-12-25 10:00:00",
+  "categories": "Holiday, Special"
+}
+```
+
+## Response Examples
+
+### Success Response (200 OK)
+
+```json
+{
+  "error": false,
+  "message": "Post added to queue",
+  "data": {
+    "google_docs_url": "https://docs.google.com/document/d/1aBcDeFg/edit",
+    "title": "My Blog Post",
+    "jobId": "job-abc123"
+  }
+}
+```
+
+### Error Responses
+
+**Bad Request (400)**
+
+```json
+{
+  "error": true,
+  "message": "Invalid Google Docs URL",
+  "details": "The provided URL is not accessible or not shared properly"
+}
+```
+
+**Unauthorized (401)**
+
+```json
+{
+  "error": true,
+  "message": "Invalid API token",
+  "details": "Please check your API token and try again"
+}
+```
+
+**Rate Limited (429)**
+
+```json
+{
+  "error": true,
+  "message": "Rate limit exceeded",
+  "details": "You've exceeded the rate limit. Please wait before making more requests."
+}
+```
+
+## cURL Examples
+
+### Basic cURL Request
+
+```bash
+curl -X POST 'https://api.docswrite.com/api/export?token=YOUR_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "google_docs_url": "https://docs.google.com/document/d/1aBcDeFg/edit",
+    "title": "My Blog Post",
+    "state": "publish",
+    "categories": "Technology, WordPress",
+    "tags": "automation, publishing"
+  }'
+```
+
+### Advanced cURL Request with SEO
+
+```bash
+curl -X POST 'https://api.docswrite.com/api/export?token=YOUR_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "google_docs_url": "https://docs.google.com/document/d/1aBcDeFg/edit",
+    "title": "SEO Optimized Post",
+    "state": "publish",
+    "yoast_settings": {
+      "yoast_focuskw": "SEO optimization",
+      "yoast_metadesc": "Learn how to optimize your content for search engines"
+    },
+    "export_settings": {
+      "compress_images": true,
+      "convert_to_webp": true
+    }
+  }'
+```

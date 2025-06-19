@@ -1,4 +1,197 @@
 ---
-title: 'Get Plants'
-openapi: 'GET /plants'
+title: "Job Status"
+description: "Track the status of your Docswrite publishing jobs"
+openapi: "POST /api/job/status"
 ---
+
+<Note>
+  This endpoint is automatically generated from our OpenAPI specification.
+  Parameters, examples, and responses are kept in sync with the API.
+</Note>
+
+## Additional Information
+
+### Usage Examples
+
+#### Polling for Completion
+
+```javascript
+async function waitForJobCompletion(jobId, token) {
+  while (true) {
+    const response = await fetch("https://api.docswrite.com/api/job/status", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token,
+      },
+      body: JSON.stringify({
+        jobId: jobId,
+        queueType: "post",
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success && data.data.state === "completed") {
+      console.log("Job completed successfully!");
+      break;
+    } else if (data.success && data.data.state === "failed") {
+      console.error("Job failed:", data.data.failedReason);
+      break;
+    }
+
+    // Wait 5 seconds before checking again
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+  }
+}
+```
+
+#### Progress Tracking
+
+```javascript
+function trackProgress(jobId, token) {
+  const interval = setInterval(async () => {
+    const response = await fetch("https://api.docswrite.com/api/job/status", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": token,
+      },
+      body: JSON.stringify({ jobId, queueType: "post" }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      console.log(`Progress: ${data.data.progress}%`);
+
+      if (data.data.state === "completed" || data.data.state === "failed") {
+        clearInterval(interval);
+      }
+    }
+  }, 2000);
+}
+```
+
+<Note>
+  You can only check the status of jobs that you created. The API will return a
+  403 error if you try to check someone else's job.
+</Note>
+
+## Get Job Status
+
+Check the status of a publishing job using the job ID returned when creating a post.
+
+```bash
+POST https://api.docswrite.com/api/job/status
+```
+
+### Headers
+
+| Header         | Value              |
+| -------------- | ------------------ |
+| Content-Type   | `application/json` |
+| x-access-token | `YOUR_JWT_TOKEN`   |
+
+### Request Body
+
+```json
+{
+  "jobId": "job-123",
+  "queueType": "post"
+}
+```
+
+### Parameters
+
+| Parameter   | Type   | Required | Description                              |
+| ----------- | ------ | -------- | ---------------------------------------- |
+| `jobId`     | string | Yes      | The job ID returned when creating a post |
+| `queueType` | string | No       | Queue type, defaults to "post"           |
+
+### Response
+
+**Success Response (200 OK)**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "job-123",
+    "state": "completed",
+    "progress": 100,
+    "returnValue": {},
+    "failedReason": null,
+    "timestamp": 1234567890,
+    "processedOn": 1234567890,
+    "finishedOn": 1234567890
+  }
+}
+```
+
+### Job States
+
+| State       | Description                                 |
+| ----------- | ------------------------------------------- |
+| `waiting`   | Job is in the queue waiting to be processed |
+| `active`    | Job is currently being processed            |
+| `completed` | Job finished successfully                   |
+| `failed`    | Job failed with an error                    |
+| `delayed`   | Job is scheduled to run later               |
+
+### Response Fields
+
+| Field          | Type   | Description                 |
+| -------------- | ------ | --------------------------- |
+| `id`           | string | The job ID                  |
+| `state`        | string | Current state of the job    |
+| `progress`     | number | Progress percentage (0-100) |
+| `returnValue`  | object | Result data when completed  |
+| `failedReason` | string | Error message if job failed |
+| `timestamp`    | number | Job creation timestamp      |
+| `processedOn`  | number | When job processing started |
+| `finishedOn`   | number | When job finished           |
+
+### cURL Example
+
+```bash
+curl -X POST 'https://api.docswrite.com/api/job/status' \
+  -H 'Content-Type: application/json' \
+  -H 'x-access-token: YOUR_JWT_TOKEN' \
+  -d '{
+    "jobId": "job-123",
+    "queueType": "post"
+  }'
+```
+
+### Error Responses
+
+**Unauthorized (401)**
+
+```json
+{
+  "error": true,
+  "message": "Unauthorized",
+  "details": "Invalid or missing access token"
+}
+```
+
+**Forbidden (403)**
+
+```json
+{
+  "error": true,
+  "message": "Access denied",
+  "details": "You can only check the status of jobs that you created"
+}
+```
+
+**Not Found (404)**
+
+```json
+{
+  "error": true,
+  "message": "Job not found",
+  "details": "No job found with the provided ID"
+}
+```

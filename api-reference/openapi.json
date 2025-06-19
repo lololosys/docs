@@ -1,72 +1,52 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
+    "title": "Docswrite API",
+    "description": "REST API for publishing Google Docs to WordPress with Docswrite",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Docswrite Support",
+      "url": "https://docswrite.com/support",
+      "email": "support@docswrite.com"
     },
-    "version": "1.0.0"
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.docswrite.com",
+      "description": "Production server"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "apiToken": []
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
+    "/api/export": {
+      "post": {
+        "summary": "Create WordPress Post",
+        "description": "Create or update a WordPress post/page from a Google Docs document",
         "parameters": [
           {
-            "name": "limit",
+            "name": "token",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "required": true,
+            "description": "Your personal API token",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "description": "Post creation parameters",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/CreatePostRequest"
               }
             }
           },
@@ -74,21 +54,41 @@
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "Post creation initiated successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/CreatePostResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad request - invalid parameters",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid API token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -96,121 +96,392 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
+    "/api/job/status": {
+      "post": {
+        "summary": "Get Job Status",
+        "description": "Check the status of a publishing job",
+        "security": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
+            "jwtToken": []
           }
         ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "webhooks": {
-    "/plant/webhook": {
-      "post": {
-        "description": "Information about a new plant added to the store",
         "requestBody": {
-          "description": "Plant added to the store",
+          "description": "Job status request",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/JobStatusRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
+            "description": "Job status retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobStatusResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid JWT token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - cannot access this job",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Job not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
     }
   },
   "components": {
+    "securitySchemes": {
+      "apiToken": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "token",
+        "description": "API token obtained from Docswrite dashboard"
+      },
+      "jwtToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT token for authenticated requests"
+      }
+    },
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "CreatePostRequest": {
         "type": "object",
+        "required": [
+          "google_docs_url"
+        ],
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "google_docs_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the Google Doc (must be shared with 'anyone with link')",
+            "example": "https://docs.google.com/document/d/1aBcDeFg/edit"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "title": {
+            "type": "string",
+            "description": "Post title (defaults to Google Docs title)",
+            "example": "My Blog Post"
+          },
+          "slug": {
+            "type": "string",
+            "description": "Custom URL slug (auto-generated if not provided)",
+            "example": "my-blog-post"
+          },
+          "tags": {
+            "type": "string",
+            "description": "Comma-separated list of tags",
+            "example": "technology, wordpress, automation"
+          },
+          "categories": {
+            "type": "string",
+            "description": "Comma-separated list of categories",
+            "example": "Technology, Tutorials"
+          },
+          "state": {
+            "type": "string",
+            "enum": ["draft", "publish"],
+            "default": "draft",
+            "description": "Post publication status"
+          },
+          "author": {
+            "type": "string",
+            "description": "Author username or full name",
+            "example": "John Doe"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Publication date in YYYY-MM-DD HH:MM:SS format",
+            "example": "2024-04-01 09:00:00"
+          },
+          "excerpt": {
+            "type": "string",
+            "description": "Post excerpt for SEO",
+            "example": "This is a brief description of the post content."
+          },
+          "post_type": {
+            "type": "string",
+            "enum": ["post", "page"],
+            "default": "post",
+            "description": "Type of content to create"
+          },
+          "featured_image_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the featured image",
+            "example": "https://example.com/image.jpg"
+          },
+          "featured_image_alt_text": {
+            "type": "string",
+            "description": "Alt text for the featured image",
+            "example": "Description of the featured image"
+          },
+          "featured_image_caption": {
+            "type": "string",
+            "description": "Caption for the featured image",
+            "example": "Image caption text"
+          },
+          "export_settings": {
+            "$ref": "#/components/schemas/ExportSettings"
+          },
+          "yoast_settings": {
+            "$ref": "#/components/schemas/YoastSettings"
+          },
+          "rankmath_settings": {
+            "$ref": "#/components/schemas/RankMathSettings"
+          },
+          "newspack_settings": {
+            "$ref": "#/components/schemas/NewspackSettings"
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
+      "ExportSettings": {
+        "type": "object",
+        "properties": {
+          "compress_images": {
+            "type": "boolean",
+            "default": true,
+            "description": "Compress images before upload"
           },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
+          "demote_headings": {
+            "type": "boolean",
+            "default": false,
+            "description": "Demote headings by one level"
+          },
+          "convert_to_webp": {
+            "type": "boolean",
+            "default": true,
+            "description": "Convert images to WebP format"
+          },
+          "first_image_as_featured_image": {
+            "type": "boolean",
+            "default": true,
+            "description": "Set the first image as featured image"
+          },
+          "add_no_follow_to_external_links": {
+            "type": "boolean",
+            "default": true,
+            "description": "Add nofollow attribute to external links"
+          },
+          "bold_as_strong": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convert bold text to strong tag"
+          },
+          "wp_content_editor": {
+            "type": "string",
+            "enum": ["classic", "gutenberg_editor"],
+            "default": "classic",
+            "description": "WordPress content editor to use"
           }
-        ]
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "YoastSettings": {
+        "type": "object",
+        "properties": {
+          "yoast_focuskw": {
+            "type": "string",
+            "description": "Yoast focus keyword",
+            "example": "wordpress automation"
+          },
+          "yoast_metadesc": {
+            "type": "string",
+            "description": "Yoast meta description",
+            "example": "Learn how to automate WordPress publishing with Docswrite"
+          },
+          "yoast_title": {
+            "type": "string",
+            "description": "Yoast SEO title",
+            "example": "WordPress Automation Guide | My Site"
+          },
+          "yoast_canonical": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical URL",
+            "example": "https://example.com/wordpress-automation"
+          }
+        }
+      },
+      "RankMathSettings": {
+        "type": "object",
+        "properties": {
+          "rank_math_focus_keyword": {
+            "type": "string",
+            "description": "RankMath focus keyword",
+            "example": "wordpress automation"
+          }
+        }
+      },
+      "NewspackSettings": {
+        "type": "object",
+        "properties": {
+          "newspack_article_summary": {
+            "type": "string",
+            "description": "Article summary for Newspack",
+            "example": "This article covers WordPress automation techniques"
+          },
+          "newspack_article_summary_title": {
+            "type": "string",
+            "description": "Article summary title for Newspack",
+            "example": "WordPress Automation Summary"
+          },
+          "newspack_post_subtitle": {
+            "type": "string",
+            "description": "Post subtitle for Newspack",
+            "example": "A comprehensive guide to automation"
+          }
+        }
+      },
+      "CreatePostResponse": {
         "type": "object",
         "properties": {
           "error": {
-            "type": "integer",
-            "format": "int32"
+            "type": "boolean",
+            "example": false
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Post added to queue"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "google_docs_url": {
+                "type": "string",
+                "example": "https://docs.google.com/document/d/1aBcDeFg/edit"
+              },
+              "title": {
+                "type": "string",
+                "example": "My Blog Post"
+              },
+              "jobId": {
+                "type": "string",
+                "example": "job-abc123"
+              }
+            }
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      },
+      "JobStatusRequest": {
+        "type": "object",
+        "required": [
+          "jobId"
+        ],
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "description": "Job ID returned from post creation",
+            "example": "job-abc123"
+          },
+          "queueType": {
+            "type": "string",
+            "default": "post",
+            "description": "Type of queue to check",
+            "example": "post"
+          }
+        }
+      },
+      "JobStatusResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "job-abc123"
+              },
+              "state": {
+                "type": "string",
+                "enum": ["waiting", "active", "completed", "failed", "delayed"],
+                "example": "completed"
+              },
+              "progress": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100,
+                "example": 100
+              },
+              "returnValue": {
+                "type": "object",
+                "description": "Result data when job is completed"
+              },
+              "failedReason": {
+                "type": "string",
+                "nullable": true,
+                "description": "Error message if job failed"
+              },
+              "timestamp": {
+                "type": "integer",
+                "description": "Job creation timestamp",
+                "example": 1234567890
+              },
+              "processedOn": {
+                "type": "integer",
+                "description": "When job processing started",
+                "example": 1234567890
+              },
+              "finishedOn": {
+                "type": "integer",
+                "description": "When job finished",
+                "example": 1234567890
+              }
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "Invalid Google Docs URL"
+          },
+          "details": {
+            "type": "string",
+            "example": "The provided URL is not accessible or not shared properly"
+          }
+        }
       }
     }
   }

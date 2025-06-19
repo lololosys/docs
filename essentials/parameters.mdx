@@ -1,0 +1,136 @@
+---
+title: "Supported Parameters"
+description: "Complete list of all parameters supported by Docswrite for customizing your WordPress publications"
+---
+
+Docswrite supports a comprehensive set of parameters for creating or updating blog posts and pages on WordPress. These parameters can be used in multiple ways to give you maximum flexibility.
+
+## Google Docs Template
+
+Use this [Google Docs Template](https://docs.google.com/document/d/1qXrzl39WJKYt1AnFxq7sOKmlXmdKa8N5Kuk7Al7d5XI/edit?usp=sharing) to create your blog post.
+The template includes all the supported features of Docswrite. You will notice we have a special `docswrite_settings` table at the top of the document. This table is used to configure the export settings for your blog post.
+
+## How to Use Parameters
+
+All parameters are supported in the following ways:
+
+- **In the `docswrite_settings` table** at the top of your Google Doc. Check this [Google Docs Template](https://docs.google.com/document/d/1xoQOTl945fGRm_5YrRalZUEa_9U5q8y3r0pploi_360/edit?usp=sharing)
+- **In our Zapier integration** (see [Zapier Integration](/guides/zapier-flow) for more details)
+- **Via our REST API** (see [REST API](/api-reference/introduction) for more details)
+
+## General Parameters
+
+| Parameter                 | Required | Description                                                                                         |
+| ------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `google_docs_url`         | Yes      | URL of the Google Doc containing the blog post content. **Must be shared with "anyone with link."** |
+| `title`                   | No       | Title of the blog post. Defaults to Google Docs title if not provided.                              |
+| `slug`                    | No       | Custom slug for the blog post. Auto-generated if not provided.                                      |
+| `tags`                    | No       | Comma-separated list of tags. New tags will be created if they don't exist.                         |
+| `categories`              | No       | Comma-separated list of categories. New categories will be created if they don't exist.             |
+| `state`                   | No       | State of the blog post (`publish` or `draft`). Defaults to `draft`.                                 |
+| `author`                  | No       | Username or full name of the author. Defaults to API token creator.                                 |
+| `date`                    | No       | Schedule post for a future date in `YYYY-MM-DD HH:MM:SS` format.                                    |
+| `excerpt`                 | No       | Excerpt for SEO meta description.                                                                   |
+| `post_type`               | No       | Type of the blog post (`post` or `page`). Defaults to `post`.                                       |
+| `featured_image_url`      | No       | URL of the featured image.                                                                          |
+| `featured_image_alt_text` | No       | Alt text for the featured image.                                                                    |
+| `featured_image_caption`  | No       | Caption for the featured image.                                                                     |
+
+## Export Settings (`export_settings`)
+
+Control how your content is processed and exported to WordPress:
+
+| Parameter                         | Default   | Description                                             |
+| --------------------------------- | --------- | ------------------------------------------------------- |
+| `compress_images`                 | `true`    | Compress images before upload.                          |
+| `demote_headings`                 | `false`   | Demote headings by one level.                           |
+| `convert_to_webp`                 | `true`    | Convert images to WebP format.                          |
+| `first_image_as_featured_image`   | `true`    | Set the first image as the featured image.              |
+| `add_no_follow_to_external_links` | `true`    | Add `nofollow` attribute to external links.             |
+| `bold_as_strong`                  | `false`   | Convert bold text to `strong` tag.                      |
+| `wp_content_editor`               | `classic` | Content editor to use (`classic` or `gutenberg_editor`) |
+
+## Plugin-Specific Settings
+
+### Newspack Settings (`newspack_settings`)
+
+For sites using the Newspack theme:
+
+| Parameter                        | Description                         |
+| -------------------------------- | ----------------------------------- |
+| `newspack_article_summary`       | Article summary for Newspack.       |
+| `newspack_article_summary_title` | Article summary title for Newspack. |
+| `newspack_post_subtitle`         | Post subtitle for Newspack.         |
+
+<Note>
+  To use Yoast & RankMath SEO features, download and install our [WordPress
+  Plugin](/essentials/wordpress-plugin).
+</Note>
+
+### Yoast SEO Settings (`yoast_settings`)
+
+For sites using Yoast SEO plugin:
+
+| Parameter         | Description             |
+| ----------------- | ----------------------- |
+| `yoast_focuskw`   | Yoast focus keyword.    |
+| `yoast_metadesc`  | Yoast meta description. |
+| `yoast_title`     | Yoast title.            |
+| `yoast_canonical` | Yoast canonical URL.    |
+
+### RankMath SEO Settings (`rankmath_settings`)
+
+For sites using RankMath SEO plugin:
+
+| Parameter                 | Description             |
+| ------------------------- | ----------------------- |
+| `rank_math_focus_keyword` | RankMath focus keyword. |
+
+### ACF Settings (`acf_`)
+
+For sites using Advanced Custom Fields:
+
+| Parameter        | Description                                   |
+| ---------------- | --------------------------------------------- |
+| `acf_field_name` | Custom field value - supports URLs for images |
+
+## Example Usage
+
+### In Google Docs Table
+
+Create a table at the top of your Google Doc with the column header `docswrite_settings`:
+
+| docswrite_settings | Value                         |
+| ------------------ | ----------------------------- |
+| title              | My Amazing Blog Post          |
+| categories         | Technology, WordPress         |
+| tags               | docswrite, automation         |
+| state              | publish                       |
+| featured_image_url | https://example.com/image.jpg |
+
+### Via API
+
+```json
+{
+  "google_docs_url": "https://docs.google.com/document/d/1aBcDeFg/edit",
+  "title": "My Amazing Blog Post",
+  "categories": "Technology, WordPress",
+  "tags": "docswrite, automation",
+  "state": "publish",
+  "export_settings": {
+    "compress_images": true,
+    "convert_to_webp": true
+  }
+}
+```
+
+## Best Practices
+
+1. **Always share your Google Doc** with "Anyone with the link" before publishing
+2. **Use descriptive titles and slugs** for better SEO
+3. **Set appropriate categories and tags** to organize your content
+4. **Include alt text for images** for accessibility
+5. **Use the WordPress plugin** for enhanced SEO features
+6. **Test with draft posts** before publishing live content
+
+Need help with parameters? Check our [Support page](/support) for assistance.

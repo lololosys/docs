@@ -1,0 +1,156 @@
+---
+title: "Connect WordPress"
+description: "Learn how to connect your WordPress site to Docswrite for seamless publishing"
+---
+
+## Connect Your WordPress Site
+
+Connecting your WordPress site to Docswrite is simple and takes just a few steps. This guide works for both WordPress.com and self-hosted WordPress sites.
+
+## Connection Process
+
+<Steps>
+  <Step title="Copy your WordPress Site URL">
+    First, copy your WordPress site URL. You can find it in your WordPress Dashboard → Settings → General → Site Address (URL).
+
+    ![WordPress Settings](/images/wordpress-settings.png)
+
+    Make sure to copy the **Site Address (URL)**, not the WordPress Address.
+
+  </Step>
+
+  <Step title="Click on Connect WordPress Site">
+    In your Docswrite dashboard, click on the "Connect WordPress Site" button. This will open a connection modal.
+
+    ![Connect WordPress Site](/images/dashboard-connect.png)
+
+  </Step>
+
+  <Step title="Paste your WordPress Site URL">
+    Paste your WordPress Site URL in the connection modal and click the "Connect" button.
+
+    ![Paste WordPress Site URL](/images/docswrite-connect-modal.png)
+
+  </Step>
+
+  <Step title="Authorize Docswrite">
+    You'll be redirected to your WordPress site where you need to authorize Docswrite. Click the "Approve" button to grant permissions.
+
+    ![Authorize Docswrite](/images/help-connect.jpeg)
+
+    This gives Docswrite permission to:
+    - Create and publish posts
+    - Upload images to your media library
+    - Access categories and tags
+    - Set post metadata and SEO settings
+
+  </Step>
+</Steps>
+
+## WordPress.com vs Self-Hosted
+
+### WordPress.com Sites
+
+For WordPress.com hosted sites, the connection process is straightforward - just follow the steps above and you're ready to go!
+
+### Self-Hosted WordPress Sites
+
+For self-hosted WordPress sites, you may need to:
+
+1. **Enable Application Passwords** (WordPress 5.6+)
+2. **Install our WordPress Plugin** for enhanced features
+3. **Check Permissions** to ensure your user can publish posts
+
+### Troubleshooting Self-Hosted Sites
+
+If you're having trouble connecting your self-hosted WordPress site:
+
+**Check WordPress Version**
+
+- Ensure you're running WordPress 5.6 or higher
+- Application passwords are required for authentication
+
+**Enable Application Passwords**
+
+```php
+// Add to your wp-config.php if needed
+define('WP_ENVIRONMENT_TYPE', 'production');
+```
+
+**Plugin Installation**
+Consider installing our [WordPress Plugin](/essentials/wordpress-plugin) for:
+
+- Better compatibility
+- Enhanced SEO features
+- Improved error handling
+
+## Connection Requirements
+
+Your WordPress site must have:
+
+- ✅ WordPress 5.6 or higher
+- ✅ REST API enabled (default)
+- ✅ User with publishing permissions
+- ✅ HTTPS enabled (recommended)
+
+## Security & Permissions
+
+Docswrite uses secure OAuth 2.0 authentication and only requests the minimum permissions needed:
+
+- **Posts**: Create, edit, and publish posts/pages
+- **Media**: Upload and manage images
+- **Categories/Tags**: Create and assign categories and tags
+- **Users**: Access author information
+
+You can revoke access at any time from your WordPress admin panel.
+
+## After Connection
+
+Once connected, you can:
+
+- ✅ Publish Google Docs directly to WordPress
+- ✅ Schedule posts for future publication
+- ✅ Set categories, tags, and SEO metadata
+- ✅ Upload and optimize images automatically
+- ✅ Use all Docswrite features and integrations
+
+## Multiple WordPress Sites
+
+You can connect multiple WordPress sites to the same Docswrite account:
+
+1. Complete the connection process for each site
+2. Select the target site when publishing
+3. Use different parameters for different sites
+4. Set up separate Zapier workflows if needed
+
+## Need Help?
+
+If you're having trouble connecting your WordPress site:
+
+<CardGroup cols={2}>
+  <Card
+    title="Check Requirements"
+    icon="checklist"
+    href="#connection-requirements"
+  >
+    Verify your WordPress meets the requirements
+  </Card>
+  <Card title="Install Plugin" icon="plug" href="/essentials/wordpress-plugin">
+    Enhanced compatibility with our WordPress plugin
+  </Card>
+  <Card title="Contact Support" icon="envelope" href="/support">
+    Get help from our support team
+  </Card>
+  <Card title="View FAQs" icon="question" href="/essentials/faqs">
+    Common WordPress connection issues
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+Once your WordPress site is connected:
+
+- [Start Publishing](/guides/dashboard-flow) - Learn the dashboard publishing flow
+- [Set Up Automation](/guides/zapier-flow) - Automate with Zapier
+- [Configure Parameters](/essentials/parameters) - Customize your publications
+- [Install WordPress Plugin](/essentials/wordpress-plugin) - Enhanced features

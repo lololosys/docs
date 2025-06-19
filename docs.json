@@ -1,35 +1,58 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Docswrite Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#1E40AF"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "quickstart"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Use Cases", 
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "use-cases/google-doc-wordpress",
+              "use-cases/wordpress-to-google-doc",
+              "use-cases/programmatic-seo",
+              "use-cases/trello-to-wordpress",
+              "use-cases/clickup-to-wordpress",
+              "use-cases/ai-writer",
+              "use-cases/auto-publish"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "integration",
+            "pages": [
+              {
+                "group": "Wordpress",
+                "icon": "wordpress",
+                "pages": [
+                  "integrations/wordpress/api/index",
+                  "integrations/wordpress/plugin/index"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Account Management",
+            "pages": [
+              "essentials/parameters",
+              "essentials/wordpress-connection",
+              "essentials/wordpress-plugin",
+              "essentials/faqs"
             ]
           }
         ]
@@ -44,12 +67,10 @@
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Endpoints",
             "pages": [
-              "api-reference/endpoint/get",
               "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/get"
             ]
           }
         ]
@@ -58,18 +79,18 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Support",
+          "href": "https://docswrite.com/support",
+          "icon": "life-ring"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Dashboard",
+          "href": "https://docswrite.com/dashboard",
+          "icon": "dashboard"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://docswrite.com/blog",
           "icon": "newspaper"
         }
       ]
@@ -77,26 +98,25 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.webp"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://docswrite.com/support"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://docswrite.com/dashboard"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/docswrite",
+      "github": "https://github.com/docswrite"
     }
   }
 }

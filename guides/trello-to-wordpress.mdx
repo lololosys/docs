@@ -1,0 +1,284 @@
+---
+title: "Trello to WordPress Integration"
+description: "Automate publishing from Trello cards to WordPress using Docswrite and Zapier"
+---
+
+# How to Publish from Google Docs to WordPress Using Trello
+
+Integrating Trello with Zapier and Docswrite creates a powerful content workflow that lets you manage your editorial process visually and publish content automatically when cards are moved to specific lists.
+
+## What You'll Need
+
+- ✅ A Trello account
+- ✅ A Zapier account
+- ✅ A Docswrite account
+- ✅ A connected WordPress site
+
+## Step 1: Set Up Your Trello Board
+
+<Steps>
+  <Step title="Create a Content Board">
+    Create a new Trello board specifically for your content workflow with these lists:
+    - **Ideas** - New content ideas
+    - **In Progress** - Content being written
+    - **Ready for Review** - Content ready for editing
+    - **Ready to Publish** - Approved content ready for publication
+    - **Published** - Successfully published content
+
+    ![Trello Board Setup](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_0.png)
+
+  </Step>
+
+  <Step title="Add Custom Fields">
+    Enable the Custom Fields Power-Up in Trello and create these fields:
+    - **Google Docs Link** (URL) - Link to your Google Doc
+    - **Categories** (Text) - WordPress categories
+    - **Tags** (Text) - WordPress tags
+    - **Publication Date** (Date) - When to publish
+    - **Featured Image** (URL) - Featured image URL
+
+    ![Custom Fields](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_1.png)
+
+  </Step>
+
+  <Step title="Create Content Cards">
+    For each piece of content, create a card with:
+    - Descriptive title
+    - Google Docs link in the custom field
+    - Relevant labels for categories
+    - Due date for publication deadlines
+
+    ![Content Cards](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_2.png)
+
+  </Step>
+</Steps>
+
+## Step 2: Create a Zapier Automation
+
+<Steps>
+  <Step title="Create New Zap">
+    Log in to Zapier and create a new Zap with Trello as the trigger.
+
+    ![Create Zap](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_3.png)
+
+  </Step>
+
+  <Step title="Configure Trello Trigger">
+    - Choose "Card Moved to List" as the trigger
+    - Connect your Trello account
+    - Select your content board
+    - Choose "Ready to Publish" as the target list
+
+    ![Trello Trigger](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_4.png)
+
+  </Step>
+
+  <Step title="Test the Trigger">
+    Move a test card to the "Ready to Publish" list to verify the trigger works correctly.
+
+    ![Test Trigger](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_5.png)
+
+  </Step>
+</Steps>
+
+## Step 3: Set Up Docswrite Action
+
+<Steps>
+  <Step title="Add Docswrite Action">
+    Search for and select Docswrite as the action app, then choose "Export Content from Google Docs to WordPress".
+
+    ![Select Docswrite](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_6.png)
+
+  </Step>
+
+  <Step title="Connect Docswrite">
+    Connect your Docswrite account using your API token from the Docswrite dashboard settings.
+
+    ![Connect Docswrite](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_7.png)
+
+  </Step>
+
+  <Step title="Map Trello Data to Docswrite">
+    Configure the publishing parameters:
+    - **Title**: Map from Trello card name
+    - **Google Docs URL**: Map from the custom field
+    - **Categories**: Map from the categories custom field
+    - **Tags**: Map from the tags custom field or labels
+    - **Status**: Set to "publish" or map from a custom field
+    - **Date**: Map from publication date custom field (optional)
+
+    ![Map Fields](/images/how-to-publish-from-google-docs-to-wordpress-using-trello_8.png)
+
+  </Step>
+</Steps>
+
+## Step 4: Add Follow-up Actions (Optional)
+
+Enhance your workflow with additional Zapier actions:
+
+### Move Card to Published List
+
+- **Action**: Trello - Move Card to List
+- **List**: "Published"
+- **When**: After successful publication
+
+### Send Slack Notification
+
+- **Action**: Slack - Send Channel Message
+- **Message**: "New post published: {{card_name}}"
+- **When**: After successful publication
+
+### Update Spreadsheet
+
+- **Action**: Google Sheets - Create Row
+- **Data**: Publication date, title, URL, author
+- **When**: After successful publication
+
+## Advanced Workflow Features
+
+### Editorial Approval Process
+
+Set up a multi-step approval workflow:
+
+1. **Draft** → Writer creates content and Google Doc
+2. **In Review** → Editor reviews and approves
+3. **Ready to Publish** → Triggers automatic publication
+4. **Published** → Card moved automatically after publication
+
+### Content Calendar Integration
+
+Use Trello's calendar view to:
+
+- Schedule content publication dates
+- Visualize your content pipeline
+- Track publication deadlines
+- Plan seasonal content
+
+### Team Collaboration
+
+Leverage Trello's collaboration features:
+
+- Assign cards to specific writers
+- Use labels for content types
+- Add comments for feedback
+- Set due dates for deadlines
+- Use checklists for content requirements
+
+## Best Practices
+
+### Card Organization
+
+- Use consistent naming conventions
+- Include target keywords in card titles
+- Add detailed descriptions with content briefs
+- Use labels to categorize content types
+
+### Google Docs Management
+
+- Keep a consistent document structure
+- Use the docswrite_settings table for parameters
+- Ensure all documents are properly shared
+- Name documents to match Trello card titles
+
+### Quality Control
+
+- Always test with draft posts first
+- Set up review checkpoints in your workflow
+- Monitor published content for formatting issues
+- Create templates for different content types
+
+## Troubleshooting
+
+### Common Issues
+
+**Zap not triggering**
+
+- Verify the card was moved to the correct list
+- Check that the Trello trigger is properly configured
+- Ensure your Trello account connection is active
+
+**Publication failing**
+
+- Confirm the Google Docs URL is correct and accessible
+- Verify your WordPress connection in Docswrite
+- Check that all required custom fields are filled
+
+**Missing images or formatting**
+
+- Ensure images in Google Docs are accessible
+- Install the Docswrite WordPress plugin for better compatibility
+- Use simple formatting in Google Docs
+
+**Wrong categories or tags**
+
+- Check the custom field mapping in Zapier
+- Verify category and tag names match WordPress
+- Use consistent naming conventions
+
+## Editorial Workflow Examples
+
+### Blog Post Workflow
+
+1. **Idea** → Research and outline creation
+2. **In Progress** → Writing and Google Doc creation
+3. **Ready for Review** → Editor review and feedback
+4. **Ready to Publish** → Final approval and automatic publication
+5. **Published** → Promotion and distribution
+
+### News Article Workflow
+
+1. **Breaking** → Urgent news items
+2. **In Progress** → Quick writing and fact-checking
+3. **Ready to Publish** → Immediate publication
+4. **Published** → Social media promotion
+
+## Integration with Other Tools
+
+### Content Planning
+
+- **Airtable**: Use as a content database with Trello cards
+- **Google Calendar**: Sync publication dates
+- **Notion**: Link to detailed content briefs
+
+### Analytics and Tracking
+
+- **Google Analytics**: Track published post performance
+- **Social Media**: Auto-share to social platforms
+- **Email Marketing**: Add to newsletter campaigns
+
+## Next Steps
+
+Once your Trello integration is working smoothly:
+
+<CardGroup cols={2}>
+  <Card
+    title="ClickUp Integration"
+    icon="list-check"
+    href="/guides/clickup-to-wordpress"
+  >
+    Set up similar automation with ClickUp
+  </Card>
+  <Card
+    title="Advanced Parameters"
+    icon="settings"
+    href="/essentials/parameters"
+  >
+    Customize publications with more parameters
+  </Card>
+  <Card
+    title="WordPress Plugin"
+    icon="wordpress"
+    href="/essentials/wordpress-plugin"
+  >
+    Enhanced features with our WordPress plugin
+  </Card>
+  <Card title="API Integration" icon="code" href="/api-reference/introduction">
+    Build custom integrations with our API
+  </Card>
+</CardGroup>
+
+<Note>
+  This integration works best with a well-organized Trello board and
+  consistently formatted Google Docs. For troubleshooting, check our
+  [FAQs](/essentials/faqs) or [contact support](/support).
+</Note>{" "}

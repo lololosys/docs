@@ -1,0 +1,233 @@
+---
+title: "ClickUp to WordPress Integration"
+description: "Automate publishing from ClickUp tasks to WordPress using Docswrite and Zapier"
+---
+
+# How to Publish from Google Docs to WordPress Using ClickUp
+
+Integrating ClickUp with Zapier and Docswrite streamlines your content workflow, making it easier to manage tasks and publish content directly from your project management tool. This guide walks you through setting up this powerful automation.
+
+## What You'll Need
+
+- ✅ A ClickUp account
+- ✅ A Zapier account
+- ✅ A Docswrite account
+- ✅ A connected WordPress site
+
+## Step 1: Set Up Your ClickUp Board
+
+<Steps>
+  <Step title="Create a ClickUp Board">
+    Log in to ClickUp and create a new board specifically for your content workflow.
+  </Step>
+
+{" "}
+<Step title="Add Tasks">
+  Create tasks for each piece of content you plan to publish. Include details
+  like the title, and any tags or categories.
+</Step>
+
+  <Step title="Create Custom Field">
+    You need to create a custom field called **"Google Docs Link"** - this is where you'll attach the link to your Google Doc.
+
+    ![Custom Field Setup](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_1.png)
+
+    **Important**: Make sure your Google Docs links are shared with "Anyone with the link".
+
+  </Step>
+</Steps>
+
+## Step 2: Create a Zap in Zapier
+
+<Steps>
+  <Step title="Create New Zap">
+    Log in to Zapier and click "Make a Zap" to create a new automation.
+
+    ![Create Zap](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_3.png)
+
+  </Step>
+
+  <Step title="Set Up ClickUp Trigger">
+    Choose ClickUp as the trigger app and select "Task Changes" as the trigger event.
+
+    ![ClickUp Trigger](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_4.png)
+
+  </Step>
+
+  <Step title="Configure Trigger">
+    - Connect your ClickUp account
+    - Select the board and list you want to monitor
+    - Choose the specific trigger condition (e.g., when task status changes to "Ready to Publish")
+
+    ![Configure Trigger](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_5.png)
+
+    ![Trigger Settings](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_6.png)
+
+  </Step>
+</Steps>
+
+## Step 3: Set Up Docswrite Action
+
+<Steps>
+  <Step title="Choose Docswrite">
+    Search for and select Docswrite as the action app.
+
+    ![Select Docswrite](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_7.png)
+
+  </Step>
+
+  <Step title="Connect Docswrite Account">
+    To connect Docswrite:
+    1. Go to your Docswrite Dashboard
+    2. Click on the Settings tab
+    3. Click "Get Auth Token"
+    4. Copy the token and paste it in Zapier
+
+    ![Get Auth Token](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_7.png)
+
+  </Step>
+
+  <Step title="Configure Post Details">
+    Map your ClickUp task data to Docswrite fields:
+
+    - **Title**: Map the task title (or leave blank to use Google Docs title)
+    - **Google Docs URL**: Map to your "Google Docs Link" custom field
+    - **Status**: Choose "Publish" for immediate publishing or "Draft" for review
+    - **Categories**: Map from task tags or custom fields
+    - **Tags**: Map from task labels
+
+    ![Configure Fields](/images/how-to-publish-from-google-docs-to-wordpress-using-clickup_8.png)
+
+  </Step>
+</Steps>
+
+## Step 4: Test and Activate
+
+<Steps>
+  <Step title="Test Your Zap">
+    Run a test to ensure that updating a ClickUp task creates a post in WordPress.
+  </Step>
+
+{" "}
+<Step title="Verify Results">
+  Check your WordPress site to confirm the post was published successfully with:
+  - Correct title and content - Proper formatting - Images uploaded - Categories
+  and tags applied
+</Step>
+
+  <Step title="Activate Automation">
+    Once testing is successful, activate your Zap to start automating your workflow.
+  </Step>
+</Steps>
+
+## Advanced Configuration
+
+### Task Status Workflow
+
+Set up a multi-stage workflow:
+
+1. **Draft** → Google Doc created and linked
+2. **In Review** → Content reviewed and approved
+3. **Ready to Publish** → Triggers Docswrite publication
+4. **Published** → Task automatically updated after successful publication
+
+### Custom Fields for Publishing Control
+
+Create additional custom fields in ClickUp:
+
+- **Publication Date**: Schedule posts for future publication
+- **Post Categories**: Control WordPress categories
+- **Post Tags**: Set specific tags
+- **Featured Image URL**: Set custom featured images
+- **SEO Title**: Override the default title
+- **Meta Description**: Set custom excerpts
+
+### Error Handling
+
+Set up error notifications:
+
+- Email alerts when publication fails
+- Slack notifications for successful publications
+- Automatic task status updates based on results
+
+## Best Practices
+
+### ClickUp Organization
+
+- Use consistent naming for your custom fields
+- Create templates for different content types
+- Set up automated task assignments
+- Use ClickUp's time tracking for content creation
+
+### Content Management
+
+- Maintain a content calendar in ClickUp
+- Use task dependencies for content workflow
+- Set up recurring tasks for regular content
+- Track performance metrics in custom fields
+
+### Quality Control
+
+- Always test with draft posts first
+- Review published content promptly
+- Set up approval workflows for sensitive content
+- Monitor for formatting issues
+
+## Troubleshooting
+
+### Common Issues
+
+**Task not triggering publication**
+
+- Check that the task status matches your trigger conditions
+- Verify the Google Docs URL is properly shared
+- Ensure all required custom fields are filled
+
+**Publication failing**
+
+- Verify your WordPress connection in Docswrite
+- Check that the Google Doc is accessible
+- Confirm your WordPress permissions
+
+**Formatting issues**
+
+- Use simple formatting in Google Docs
+- Install the Docswrite WordPress plugin for better compatibility
+- Test with different content types
+
+## Next Steps
+
+Once your ClickUp integration is working:
+
+<CardGroup cols={2}>
+  <Card
+    title="Trello Integration"
+    icon="trello"
+    href="/guides/trello-to-wordpress"
+  >
+    Set up similar automation with Trello
+  </Card>
+  <Card
+    title="Advanced Parameters"
+    icon="settings"
+    href="/essentials/parameters"
+  >
+    Customize your publications with more parameters
+  </Card>
+  <Card
+    title="WordPress Plugin"
+    icon="wordpress"
+    href="/essentials/wordpress-plugin"
+  >
+    Enhanced features with our WordPress plugin
+  </Card>
+  <Card title="API Integration" icon="code" href="/api-reference/introduction">
+    Build custom integrations with our API
+  </Card>
+</CardGroup>
+
+<Note>
+  This integration works best when your Google Docs follow a consistent format
+  and are properly shared. For troubleshooting, check our
+  [FAQs](/essentials/faqs) or [contact support](/support).
+</Note>{" "}

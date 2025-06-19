@@ -1,0 +1,190 @@
+---
+title: "Zapier Integration"
+description: "Automate your publishing workflow by connecting Docswrite with Zapier"
+---
+
+## Zapier Integration
+
+Connect Docswrite with over 5,000+ apps through Zapier to automate your content publishing workflow. This allows you to publish Google Docs to WordPress automatically based on triggers from your existing tools.
+
+## What You Can Do
+
+With the Docswrite Zapier integration, you can:
+
+- **Automatically publish** when you move a card to "Done" in Trello
+- **Schedule publications** from your content calendar
+- **Trigger publishing** from ClickUp, Notion, Airtable, and more
+- **Send notifications** to Slack when posts are published
+- **Update spreadsheets** with publication status
+
+## Setting Up Zapier Integration
+
+<Steps>
+  <Step title="Connect Docswrite to Zapier">
+    1. Go to [Zapier](https://zapier.com) and create a new Zap
+    2. Search for "Docswrite" in the app directory
+    3. Connect your Docswrite account using your API credentials
+    4. Test the connection to ensure it's working
+  </Step>
+
+{" "}
+<Step title="Choose Your Trigger">
+  Select what will trigger the publishing action. Popular options include: -
+  **Trello**: When a card is moved to a specific list - **ClickUp**: When a task
+  status changes - **Google Sheets**: When a new row is added - **Airtable**:
+  When a record is updated - **Notion**: When a page property changes
+</Step>
+
+{" "}
+<Step title="Configure Docswrite Action">
+  Set up the "Create WordPress Post" action in Docswrite: - Map the Google Docs
+  URL from your trigger - Configure title, categories, and tags - Set
+  publication status (draft or publish) - Add any custom parameters needed
+</Step>
+
+  <Step title="Test and Activate">
+    Test your Zap to make sure everything works correctly, then activate it to start automating your workflow.
+  </Step>
+</Steps>
+
+## Popular Automation Examples
+
+### Trello to WordPress
+
+Automatically publish blog posts when you move Trello cards to "Published":
+
+```
+Trigger: Trello - Card moved to list "Published"
+Action: Docswrite - Create WordPress Post
+```
+
+### ClickUp to WordPress
+
+Publish content when tasks are marked as complete:
+
+```
+Trigger: ClickUp - Task status changed to "Complete"
+Action: Docswrite - Create WordPress Post
+```
+
+### Content Calendar Automation
+
+Schedule posts from Google Sheets or Airtable:
+
+```
+Trigger: Google Sheets - New row added
+Action: Docswrite - Create WordPress Post (scheduled)
+```
+
+## Available Zapier Fields
+
+When configuring your Zap, you can map these fields:
+
+### Required Fields
+
+- **Google Docs URL**: The document to publish
+- **WordPress Site**: Your connected WordPress site
+
+### Optional Fields
+
+- **Title**: Override the document title
+- **Slug**: Custom URL slug
+- **Categories**: WordPress categories (comma-separated)
+- **Tags**: Post tags (comma-separated)
+- **State**: `draft` or `publish`
+- **Author**: Author name or username
+- **Date**: Schedule publication date
+- **Excerpt**: SEO excerpt
+- **Post Type**: `post` or `page`
+- **Featured Image URL**: Featured image
+- **Featured Image Alt Text**: Alt text for featured image
+
+### Export Settings
+
+- **Compress Images**: Boolean (true/false)
+- **Convert to WebP**: Boolean (true/false)
+- **Demote Headings**: Boolean (true/false)
+- **First Image as Featured**: Boolean (true/false)
+
+## Best Practices
+
+### Document Organization
+
+- Use consistent naming conventions for your Google Docs
+- Organize documents in dedicated folders
+- Ensure all documents are shared with "Anyone with the link"
+
+### Workflow Design
+
+- Start with simple automations and gradually add complexity
+- Test your Zaps thoroughly before going live
+- Set up error handling and notifications
+- Use filters to prevent accidental publishing
+
+### Error Handling
+
+- Add filters to ensure only valid documents are processed
+- Set up email notifications for failed publications
+- Include fallbacks for missing or invalid data
+
+## Troubleshooting
+
+### Common Issues
+
+**Google Doc Not Found**
+
+- Check that the document URL is correctly mapped
+- Ensure the document is shared with "Anyone with the link"
+- Verify the URL format is correct
+
+**Publishing Failed**
+
+- Confirm your WordPress connection is active
+- Check that all required fields are provided
+- Verify your WordPress permissions
+
+**Zap Not Triggering**
+
+- Test your trigger conditions
+- Check Zapier's task history for errors
+- Ensure your trigger app is properly configured
+
+## Advanced Workflows
+
+### Multi-Step Automation
+
+Create complex workflows with multiple steps:
+
+1. **Trigger**: New row in content calendar
+2. **Filter**: Only process rows marked "Ready to Publish"
+3. **Action**: Create WordPress post with Docswrite
+4. **Action**: Send Slack notification
+5. **Action**: Update spreadsheet with publication status
+
+### Conditional Publishing
+
+Use Zapier's conditional logic to:
+
+- Publish to different WordPress sites based on content type
+- Set different categories based on document folder
+- Schedule publications at optimal times
+
+## Getting Help
+
+For Zapier-specific questions:
+
+- Check [Zapier's Help Center](https://help.zapier.com)
+- Review your Zap's task history for errors
+- Test individual steps to isolate issues
+
+For Docswrite integration questions:
+
+- Visit our [Support page](/support)
+- Check our [API documentation](/api-reference/introduction)
+- Review the [Parameters guide](/essentials/parameters)
+
+<Note>
+  The Docswrite Zapier integration uses the same parameters as our REST API. For
+  a complete list of available options, see our [Parameters
+  Reference](/essentials/parameters).
+</Note>{" "}

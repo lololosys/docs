@@ -1,0 +1,227 @@
+---
+title: "Frequently Asked Questions"
+description: "Find answers to common questions about Docswrite"
+---
+
+## Frequently Asked Questions
+
+Here are answers to the most common questions about Docswrite.
+
+### General Questions
+
+<AccordionGroup>
+  <Accordion title="What is Docswrite?">
+    Docswrite is a productivity tool that connects Google Docs to WordPress, allowing you to publish your content with just one click. It maintains formatting, handles images, and supports advanced SEO features.
+  </Accordion>
+
+{" "}
+<Accordion title="How does Docswrite work?">
+  1. Connect your Google Drive and WordPress accounts 2. Create content in
+  Google Docs 3. Share your document with "Anyone with the link" 4. Use
+  Docswrite to publish directly to WordPress You can publish via our dashboard,
+  API, or through integrations with tools like Zapier, ClickUp, and Trello.
+</Accordion>
+
+{" "}
+<Accordion title="Do I need to install anything on my WordPress site?">
+  No installation is required for basic functionality. However, we recommend
+  installing our [WordPress plugin](/essentials/wordpress-plugin) for enhanced
+  features like advanced SEO settings and better compatibility.
+</Accordion>
+
+  <Accordion title="What WordPress versions are supported?">
+    Docswrite works with WordPress 5.0 and above, including both WordPress.com and self-hosted WordPress sites.
+  </Accordion>
+</AccordionGroup>
+
+### Getting Started
+
+<AccordionGroup>
+  <Accordion title="How do I connect my Google Drive?">
+    1. Log in to your Docswrite account
+    2. Click "Connect Google Drive"
+    3. Select your Google account
+    4. Grant all requested permissions
+    5. Click "Continue"
+    
+    For detailed instructions, see our [Quick Start Guide](/quickstart).
+  </Accordion>
+
+{" "}
+<Accordion title="How do I connect my WordPress site?">
+  For WordPress.com sites, you can connect directly. For self-hosted WordPress:
+  1. Enable application passwords in WordPress 2. Create an application password
+  for Docswrite 3. Enter your site URL and credentials in Docswrite See our
+  [WordPress Connection Guide](/essentials/wordpress-connection) for details.
+</Accordion>
+
+{" "}
+<Accordion title="Why can't Docswrite access my Google Doc?">
+  The most common reason is sharing permissions. Ensure your Google Doc is
+  shared with "Anyone with the link" (not just "Anyone with the link can view").
+  This is required for Docswrite to access and process your document.
+</Accordion>
+
+  <Accordion title="Can I use custom parameters in my Google Docs?">
+    Yes! Create a table at the top of your Google Doc with the column header `docswrite_settings`. Add parameters like title, categories, tags, and more. See our [Parameters Guide](/essentials/parameters) for the complete list.
+  </Accordion>
+</AccordionGroup>
+
+### Publishing & Content
+
+<AccordionGroup>
+  <Accordion title="What formatting is preserved when publishing?">
+    Docswrite preserves:
+    - Headings (H1-H6)
+    - Bold and italic text
+    - Lists (numbered and bulleted)
+    - Links
+    - Images
+    - Tables
+    - Block quotes
+    - Code blocks
+  </Accordion>
+
+{" "}
+<Accordion title="How are images handled?">
+  Images are automatically: - Downloaded from your Google Doc - Compressed for
+  faster loading (optional) - Converted to WebP format (optional) - Uploaded to
+  your WordPress media library - Given proper alt text if specified
+</Accordion>
+
+{" "}
+<Accordion title="Can I schedule posts for later?">
+  Yes! You can schedule posts by: - Setting a future date in the `date`
+  parameter - Using the dashboard scheduling interface - Configuring scheduled
+  publishing in Zapier workflows
+</Accordion>
+
+{" "}
+<Accordion title="Can I update existing posts?">
+  Currently, Docswrite creates new posts each time. Updating existing posts is
+  on our roadmap. As a workaround, you can delete the old post and publish a new
+  one.
+</Accordion>
+
+  <Accordion title="What if my post fails to publish?">
+    Common solutions:
+    - Check that your Google Doc is properly shared
+    - Verify your WordPress connection is active
+    - Ensure you have publishing permissions
+    - Check for any error messages in the dashboard
+    
+    If issues persist, contact [Support](/support).
+  </Accordion>
+</AccordionGroup>
+
+### Integrations & API
+
+<AccordionGroup>
+  <Accordion title="Does Docswrite work with page builders?">
+    Docswrite works best with the Classic Editor. For page builders like Elementor or Beaver Builder, you may need to manually format the content after publishing.
+  </Accordion>
+
+{" "}
+<Accordion title="Can I use Docswrite with SEO plugins?">
+  Yes! Docswrite supports: - Yoast SEO - RankMath - Newspack Install our
+  [WordPress plugin](/essentials/wordpress-plugin) for full SEO feature support.
+</Accordion>
+
+{" "}
+<Accordion title="How do I integrate with my content calendar?">
+  Use our [Zapier integration](/guides/zapier-flow) to connect with: - Trello -
+  ClickUp - Notion - Airtable - Google Sheets - And 5,000+ other apps
+</Accordion>
+
+  <Accordion title="Is there an API?">
+    Yes! Our REST API allows you to:
+    - Create WordPress posts programmatically
+    - Track job status
+    - Set all the same parameters available in our dashboard
+    
+    See our [API Documentation](/api-reference/introduction) for details.
+  </Accordion>
+</AccordionGroup>
+
+### Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Why are my images not uploading?">
+    Common causes:
+    - Images too large (WordPress upload limit)
+    - Google Doc not properly shared
+    - Images in unsupported format
+    - WordPress storage limits reached
+    
+    Try compressing images or checking your WordPress media settings.
+  </Accordion>
+
+{" "}
+<Accordion title="Why is my formatting not preserved?">
+  Formatting issues can occur when: - Using complex Google Docs features -
+  WordPress theme conflicts - Page builder interference For best results, use
+  simple formatting and our WordPress plugin.
+</Accordion>
+
+{" "}
+<Accordion title="How do I reconnect my Google Drive?">
+  1. Go to your account settings 2. Click "Manage Account" 3. Scroll to
+  "Reconnect Google Drive" 4. Follow the authorization process again
+</Accordion>
+
+  <Accordion title="Why can't I see my WordPress site categories?">
+    This usually means:
+    - Your WordPress connection needs refreshing
+    - You don't have proper permissions
+    - Your WordPress site is temporarily unavailable
+    
+    Try reconnecting your WordPress site or contact support.
+  </Accordion>
+</AccordionGroup>
+
+### Billing & Plans
+
+<AccordionGroup>
+  <Accordion title="What are the usage limits?">
+    Limits depend on your plan:
+    - **Free**: 5 posts per month
+    - **Pro**: 100 posts per month
+    - **Business**: 500 posts per month
+    - **Enterprise**: Custom limits
+    
+    Check your dashboard for current usage.
+  </Accordion>
+
+{" "}
+<Accordion title="Can I upgrade or downgrade my plan?">
+  Yes, you can change your plan at any time from your account settings. Changes
+  take effect immediately, and billing is prorated.
+</Accordion>
+
+  <Accordion title="Do you offer refunds?">
+    We offer a 30-day money-back guarantee for new subscriptions. Contact [support@docswrite.com](mailto:support@docswrite.com) for refund requests.
+  </Accordion>
+</AccordionGroup>
+
+## Still Need Help?
+
+Can't find what you're looking for? Here are your options:
+
+<CardGroup cols={2}>
+  <Card title="Contact Support" icon="envelope" href="/support">
+    Get personalized help from our support team
+  </Card>
+  <Card
+    title="API Documentation"
+    icon="code"
+    href="/api-reference/introduction"
+  >
+    Technical documentation for developers
+  </Card>
+  <Card title="Quick Start Guide" icon="play" href="/quickstart">
+    Step-by-step setup instructions
+  </Card>
+  <Card title="Parameters Guide" icon="settings" href="/essentials/parameters">
+    Complete list of customization options
+  </Card>
+</CardGroup>{" "}
