@@ -54,7 +54,8 @@
                       "integrations/wordpress/acf",
                       "integrations/wordpress/yoastseo",
                       "integrations/wordpress/newspack",
-                      "integrations/wordpress/rankmath"
+                      "integrations/wordpress/rankmath",
+                      "integrations/wordpress/code-support"
                     ]
                   }
                 ]
